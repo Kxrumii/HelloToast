@@ -17,7 +17,7 @@ import androidx.lifecycle.Observer
 
 class MainActivity : AppCompatActivity() {
     private val model: NameViewModel by viewModels()
-    private var mCount = 0;
+    private var mCount: Int = 0;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         val nameObserver = Observer<Int> { newName ->
             // Update the UI, in this case, a TextView.
             mShowCount.text = newName.toString()
+            mCount = newName.toInt()
         }
 
         model.currentName.observe(this, nameObserver)
